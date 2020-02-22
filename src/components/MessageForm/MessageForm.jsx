@@ -7,7 +7,6 @@ export default class MessageForm extends Component {
     messageText: '',
   }
   handleChange = (event) => {
-    console.log('Handle')
     this.setState({
       messageText: event.target.value,
     });
@@ -20,7 +19,6 @@ export default class MessageForm extends Component {
     });
   }
   render() {
-    console.log('render');
     return (
       <form className='message-form' name='messageForm' onSubmit={ this.handleSubmit }>
         <textarea
