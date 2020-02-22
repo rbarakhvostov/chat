@@ -7,17 +7,16 @@ import MessageForm from '../MessageForm';
 import './app.scss';
 
 export default class App extends Component {
-  _protocol = 'wss://wssproxy.herokuapp.com/';
-  socket = new WebSocket(this._protocol);
+  _protocol = 'wss://wssproxy.hersokuapp.com/';
   state = {
     messages: [],
     status: 'online',
   }
 
-  componentDidMount = () => {
-    // const socket = new WebSocket(this._protocol);
-    this.socket.onmessage = (event) => {
-      console.log(JSON.parse(event.data))
+
+  connect = () => {
+    const socket = new WebSocket(this._protocol);
+    socket.onmessage = (event) => {
       this.setState(({ messages }) => {
         return {
           messages: [...messages, ...JSON.parse(event.data).reverse()],
@@ -25,11 +24,14 @@ export default class App extends Component {
       }); 
     }
 
-    this.socket.onclose = event => {
-      console.log('1', event.reason)
-      console.log('2', event.code)
-      console.log('3', event.wasClean)
+    socket.onclose = () => {
+      console.log(socket.readyState);
+      this.setState({ messages: [] });
+      this.connect();
     };
+  }
+  componentDidMount = () => {
+    this.connect();
   }
 
   handleMessageAdd = (messageText) => {
