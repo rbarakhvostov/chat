@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../Header';
+import Loader from '../Loader';
 import MessageField from '../MessageField';
 import MessageForm from '../MessageForm';
 // import WSservice from '../../service/ws-service';
@@ -9,10 +10,10 @@ import './app.scss';
 export default class App extends Component {
   _protocol = 'wss://wssproxy.herokuapp.com/';
   state = {
+    loading: true,
     messages: [],
     status: 'online',
   }
-
 
   connect = () => {
     const socket = new WebSocket(this._protocol);
@@ -27,6 +28,7 @@ export default class App extends Component {
       }
       this.setState(({ messages }) => {
         return {
+          loading: false,
           messages: [...messages, ...JSON.parse(event.data).reverse()],
         }
       }); 
@@ -55,11 +57,13 @@ export default class App extends Component {
   }
 
   render() {
-    const { messages, status } = this.state;
+    const { loading, messages, status } = this.state;
     return (
       <div className='app'>
         <Header status={ status } />
-        <MessageField messages={ messages } />
+        <div className='content'>
+          { loading ? <Loader /> : <MessageField messages={ messages } />}
+        </div>
         <MessageForm onMessageTextAdd={this.handleMessageAdd} />
       </div>
     );
