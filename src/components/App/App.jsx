@@ -17,12 +17,14 @@ export default class App extends Component {
   connect = () => {
     const socket = new WebSocket(this._protocol);
 
-    socket.onopen = () => {
-      console.log('ONOPEN');
-      this.setState({ messages: [] });
-    }
-
     socket.onmessage = (event) => {
+      if (
+        JSON.stringify(this.state.messages) 
+          === 
+        JSON.stringify(JSON.parse(event.data).reverse())
+        ) {
+        return;
+      }
       this.setState(({ messages }) => {
         return {
           messages: [...messages, ...JSON.parse(event.data).reverse()],
