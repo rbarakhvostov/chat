@@ -13,7 +13,7 @@ export default class MessageForm extends Component {
   }
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onMessageTextAdd(this.state.messageText);
+    this.props.onMessageSend(this.state.messageText);
     this.setState({
       messageText: '',
     });

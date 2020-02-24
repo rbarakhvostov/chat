@@ -9,6 +9,7 @@ import './app.scss';
 
 export default class App extends Component {
   _protocol = 'wss://wssproxy.herokuapp.com/';
+  socket = null;
   state = {
     loading: true,
     messages: [],
@@ -16,9 +17,9 @@ export default class App extends Component {
   }
 
   connect = () => {
-    const socket = new WebSocket(this._protocol);
+    this.socket = new WebSocket(this._protocol);
 
-    socket.onmessage = (event) => {
+    this.socket.onmessage = (event) => {
       if (
         JSON.stringify(this.state.messages) 
           === 
@@ -34,8 +35,8 @@ export default class App extends Component {
       }); 
     }
 
-    socket.onclose = () => {
-      console.log(socket.readyState);
+    this.socket.onclose = () => {
+      console.log(this.socket.readyState);
       this.connect();
     };
   }
@@ -44,16 +45,13 @@ export default class App extends Component {
     this.connect();
   }
 
-  handleMessageAdd = (messageText) => {
+  handleMessageSend = (messageText) => {
+    console.log(messageText);
     const message = {
       from: 'NAME',
       message: messageText,
     }
-    this.setState(({ messages }) => {
-      return {
-        messages: [...messages, message],
-      }
-    });
+    this.socket.send(JSON.stringify(message));
   }
 
   render() {
@@ -64,7 +62,7 @@ export default class App extends Component {
         <div className='content'>
           { loading ? <Loader /> : <MessageField messages={ messages } />}
         </div>
-        <MessageForm onMessageTextAdd={this.handleMessageAdd} />
+        <MessageForm onMessageSend={ this.handleMessageSend } />
       </div>
     );
   }
