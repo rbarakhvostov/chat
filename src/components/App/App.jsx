@@ -54,6 +54,13 @@ export default class App extends Component {
     });
   }
 
+  handleUserLogOut = () => {
+    localStorage.removeItem('WSchatUserName');
+    this.setState({
+      userName: null,
+    });
+  }
+
   handleMessageSend = (messageText) => {
     console.log(messageText);
     const message = {
@@ -72,7 +79,10 @@ export default class App extends Component {
 
     return (
       <div className='app'>
-        <Header userName={ userName } status={ status } />
+        <Header
+          userName={ userName }
+          status={ status }
+          onUserLogOut={ this.handleUserLogOut } />
         <div className='content'>
           { loading ? <Loader /> : <MessageField messages={ messages } /> }
         </div>
