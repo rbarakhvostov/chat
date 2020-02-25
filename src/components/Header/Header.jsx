@@ -2,11 +2,12 @@ import React from 'react';
 
 import './header.scss';
 
-const Header = ({ status }) => {
+const Header = ({ userName, status }) => {
   return (
     <div className='chat-header'>
       <span className='status'>{ status }</span>
-      <button type='button'>log in</button>
+      <span className='name'>{ userName }</span>
+      <button type='button'>log out</button>
     </div>
   );
 }

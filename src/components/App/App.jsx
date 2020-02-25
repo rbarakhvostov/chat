@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LoginForm from '../LoginForm';
 import Header from '../Header';
 import Loader from '../Loader';
 import MessageField from '../MessageField';
@@ -11,6 +12,7 @@ export default class App extends Component {
   _protocol = 'wss://wssproxy.herokuapp.com/';
   socket = null;
   state = {
+    userName: localStorage.getItem("WSchatUserName"),
     loading: true,
     messages: [],
     status: 'online',
@@ -45,22 +47,34 @@ export default class App extends Component {
     this.connect();
   }
 
+  handleUserLogIn = (userName) => {
+    localStorage.setItem('WSchatUserName', userName);
+    this.setState({
+      userName: userName,
+    });
+  }
+
   handleMessageSend = (messageText) => {
     console.log(messageText);
     const message = {
-      from: 'NAME',
+      from: this.state.userName,
       message: messageText,
     }
     this.socket.send(JSON.stringify(message));
   }
 
   render() {
-    const { loading, messages, status } = this.state;
+    const { userName, loading, messages, status } = this.state;
+
+    if (!userName) {
+      return <LoginForm onUserLogIn={ this.handleUserLogIn }/>
+    }
+
     return (
       <div className='app'>
-        <Header status={ status } />
+        <Header userName={ userName } status={ status } />
         <div className='content'>
-          { loading ? <Loader /> : <MessageField messages={ messages } />}
+          { loading ? <Loader /> : <MessageField messages={ messages } /> }
         </div>
         <MessageForm onMessageSend={ this.handleMessageSend } />
       </div>
