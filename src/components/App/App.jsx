@@ -28,17 +28,11 @@ export default class App extends Component {
   render() {
     const { userName, status } = this.state;
 
-    return (
-      <div className='app'>
-        { 
-          !userName 
-            ? <LoginForm onUserLogIn={ this.handleUserLogIn } />
-            : <Chat 
-                status={ status }
-                userName={ userName }
-                onUserLogOut={ this.handleUserLogOut } />
-        }
-      </div>
-    );
+    return  !userName 
+              ? <LoginForm onUserLogIn={ this.handleUserLogIn } />
+              : <Chat 
+                  status={ status }
+                  userName={ userName }
+                  onUserLogOut={ this.handleUserLogOut } />
   }
 }

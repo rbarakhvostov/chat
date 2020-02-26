@@ -65,7 +65,7 @@ export default class Chat extends Component {
     const { userName, status, onUserLogOut } = this.props;
 
     return (
-      <>
+      <div className='chat'>
         <Header
           userName={ userName }
           status={ status }
@@ -74,7 +74,7 @@ export default class Chat extends Component {
           { loading ? <Loader /> : <MessageField messages={ messages } /> }
         </div>
         <MessageForm onMessageSend={ this.handleMessageSend } />
-      </>
+      </div>
     );
   }
 }

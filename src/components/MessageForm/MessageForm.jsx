@@ -13,6 +13,7 @@ export default class MessageForm extends Component {
   }
   handleSubmit = (event) => {
     event.preventDefault();
+    if (!this.state.messageText.trim()) return;
     this.props.onMessageSend(this.state.messageText);
     this.setState({
       messageText: '',
