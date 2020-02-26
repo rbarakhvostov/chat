@@ -1,5 +1,12 @@
 .chat {
   width: 50%;
   max-width: 800px;
-  border: 1px solid #72e5ed;
+  border: 5px solid #1d1ab2;
+  border-radius: 5px;
+  .message-field-wrapper {
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

@@ -21,13 +21,15 @@ export default class MessageForm extends Component {
   }
   render() {
     return (
-      <form className='message-form' name='messageForm' onSubmit={ this.handleSubmit }>
+      <form className='message-form' onSubmit={ this.handleSubmit }>
         <textarea
-          rows="2"
-          name='newMessage'
+          rows='1'
+          placeholder='type your message'
           value={ this.state.messageText }
           onChange={ this.handleChange } />
-        <button type='submit'>send</button>
+        <button type='submit'>
+          <i className="fa fa-paper-plane" aria-hidden="true"></i>
+        </button>
       </form>
     );
   }

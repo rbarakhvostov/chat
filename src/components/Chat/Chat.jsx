@@ -70,7 +70,7 @@ export default class Chat extends Component {
           userName={ userName }
           status={ status }
           onUserLogOut={ onUserLogOut } />
-        <div className='content'>
+        <div className='message-field-wrapper'>
           { loading ? <Loader /> : <MessageField messages={ messages } /> }
         </div>
         <MessageForm onMessageSend={ this.handleMessageSend } />

@@ -21,7 +21,8 @@ export default class LoginForm extends Component {
       <form className='login-form' onSubmit={ this.handleSubmit }>
         <input
           value={ this.state.userName }
-          onChange={ this.handleChange } />
+          onChange={ this.handleChange } 
+          placeholder='username' />
         <button type='submit'>log in</button>
       </form>
     );
