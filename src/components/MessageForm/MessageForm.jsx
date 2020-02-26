@@ -23,7 +23,7 @@ export default class MessageForm extends Component {
     return (
       <form className='message-form' onSubmit={ this.handleSubmit }>
         <textarea
-          rows='1'
+          rows='2'
           placeholder='type your message'
           value={ this.state.messageText }
           onChange={ this.handleChange } />

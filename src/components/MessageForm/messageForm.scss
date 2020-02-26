@@ -10,6 +10,7 @@
     margin: 0 5px 0 5px;
     border-color: #1d1ab2;
     font-size: 0.8rem;
+    outline:none;
     resize: none;
   }
   button {
@@ -18,6 +19,13 @@
     border-style: none;
     background-color: #ffffff;
     font-size: 1.3em;
+    outline:none;
     cursor: pointer;
+    i {
+      color: #888888;
+      &:hover {
+        color: #1d1ab2;
+      }
+    }
   }
 }
