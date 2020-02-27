@@ -1,20 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 import MessageItem from '../MessageItem';
 
 import './messageField.scss';
 
-const MessageField = ({ messages }) => {
-  const messageItems = messages.map( item => {
-    const { id, ...itemProps } = item;
-    return (
-      <MessageItem { ...itemProps } key={ id }/>
-    );
-  });
-  return (
-    <div className='message-field'>
-      { messageItems }
-    </div>
-  );
-}
+export default class MessageField extends Component  {
 
-export default MessageField;
+  messageFieldRef = React.createRef();
+
+  moveScrollbarThumb = () => {
+    const messageField = this.messageFieldRef.current;
+    console.log(messageField)
+    messageField.scrollTop = messageField.scrollHeight;
+  }
+
+  componentDidMount() {
+    console.log('MF did mount');
+    this.moveScrollbarThumb();
+  }
+
+  componentDidUpdate() {
+    console.log('MFDIDUPDATE');
+    this.moveScrollbarThumb();
+  }
+
+  render() {
+    const messageItems = this.props.messages.map( item => {
+      const { id, ...itemProps } = item;
+      return (
+        <MessageItem { ...itemProps } key={ id }/>
+      );
+    });
+    return (
+      <div className='message-field' ref={ this.messageFieldRef }>
+        { messageItems }
+      </div>
+    );
+  }
+}
