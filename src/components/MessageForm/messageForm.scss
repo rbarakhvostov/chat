@@ -6,7 +6,7 @@
   border-top: 1px solid #000000;
   textarea {
     flex-grow: 1;
-    padding: 5px 0 5px 5px;
+    padding: 10px 0 5px 10px;
     margin: 0 5px 0 5px;
     border-color: #1d1ab2;
     font-size: 0.8rem;
@@ -21,11 +21,13 @@
     font-size: 1.3em;
     outline:none;
     cursor: pointer;
-    i {
-      color: #888888;
-      &:hover {
+    &:hover {
+      i {
         color: #1d1ab2;
       }
+    }
+    i {
+      color: #888888;
     }
   }
 }
