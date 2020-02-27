@@ -26,7 +26,6 @@ export default class Chat extends Component {
     this.socket = new WebSocket(this._protocol);
 
     this.socket.onmessage = (event) => {
-      console.log('new MESSAGE')
       if (
         JSON.stringify(this.state.messages) 
           === 
@@ -46,7 +45,6 @@ export default class Chat extends Component {
     }
 
     this.socket.onclose = (event) => {
-      console.log(event.reason);
       console.log(this.socket.readyState);
       if (event.reason === 'the work is done') return;
       this.connect();
@@ -62,12 +60,10 @@ export default class Chat extends Component {
   }
 
   componentWillUnmount = () => {
-    console.log('UNMOUNT')
     this.socket.close(1000, 'the work is done');
   }
 
   handleMessageSend = (messageText) => {
-    console.log(messageText);
     const message = {
       from: this.props.userName,
       message: messageText,
