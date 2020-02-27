@@ -8,7 +8,18 @@ import './app.scss';
 export default class App extends Component {
   state = {
     userName: localStorage.getItem("WSchatUserName"),
-    status: 'online',
+    status: navigator.onLine ? 'online' : 'offline', 
+  }
+
+  componentDidMount() {
+    window.addEventListener('online', () => this.handleConnectionChange('online'));
+    window.addEventListener('offline', () => this.handleConnectionChange('offline'));
+  }
+
+  handleConnectionChange = (status) => {
+    this.setState({
+      status,
+    });
   }
 
   handleUserLogIn = (userName) => {

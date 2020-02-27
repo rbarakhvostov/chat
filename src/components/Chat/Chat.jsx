@@ -52,6 +52,8 @@ export default class Chat extends Component {
   }
 
   componentDidMount = () => {
+    if (this.props.status === 'offline') return;
+
     if (Notification.permission !== 'granted') {
       Notification.requestPermission();
     }
@@ -59,11 +61,21 @@ export default class Chat extends Component {
     this.connect();
   }
 
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.status === 'offline' && !this.socket) {
+      this.connect();
+    }
+    
+  }
+
   componentWillUnmount = () => {
+    // if (this.props.status === 'offline' && !this.socket) return;
+    if (this.props.status === 'offline') return;
     this.socket.close(1000, 'the work is done');
   }
 
   handleMessageSend = (messageText) => {
+    if (this.props.status === 'offline') return;
     const message = {
       from: this.props.userName,
       message: messageText,
@@ -73,14 +85,10 @@ export default class Chat extends Component {
 
   render() {
     const { loading, messages } = this.state;
-    const { userName, status, onUserLogOut } = this.props;
 
     return (
       <div className='chat'>
-        <Header
-          userName={ userName }
-          status={ status }
-          onUserLogOut={ onUserLogOut } />
+        <Header { ...this.props } />
         <div className='message-field-wrapper'>
           { loading ? <Loader /> : <MessageField messages={ messages } /> }
         </div>
