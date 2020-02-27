@@ -8,10 +8,14 @@
     flex-grow: 1;
     padding: 10px 0 5px 10px;
     margin: 0 5px 0 5px;
-    border-color: #1d1ab2;
+    border: 3px solid #888888;
+    border-radius: 5px;
     font-size: 0.8rem;
     outline:none;
     resize: none;
+    &:focus {
+      border-color: #ffe900;
+    }
   }
   button {
     height: 40px;
