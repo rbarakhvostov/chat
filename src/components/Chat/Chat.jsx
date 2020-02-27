@@ -5,6 +5,7 @@ import MessageField from '../MessageField';
 import MessageForm from '../MessageForm';
 
 import './chat.scss';
+import icon from '../../notification-image.png';
 
 export default class Chat extends Component {
   _protocol = 'wss://wssproxy.herokuapp.com/';
@@ -12,6 +13,13 @@ export default class Chat extends Component {
   state = {
     loading: true,
     messages: [],
+  }
+
+  notify = (data) => {
+      new Notification('CHAT', {
+        icon,
+        body: `${data[0].from}\n${data[0].message}`,
+      });
   }
 
   connect = () => {
@@ -27,11 +35,14 @@ export default class Chat extends Component {
         return;
       }
       this.setState(({ messages }) => {
+        if (messages.length && document.hidden) {
+          this.notify(JSON.parse(event.data));
+        }
         return {
           loading: false,
           messages: [...messages, ...JSON.parse(event.data).reverse()],
         }
-      }); 
+      });
     }
 
     this.socket.onclose = (event) => {
@@ -43,6 +54,10 @@ export default class Chat extends Component {
   }
 
   componentDidMount = () => {
+    if (Notification.permission !== 'granted') {
+      Notification.requestPermission();
+    }
+
     this.connect();
   }
 
