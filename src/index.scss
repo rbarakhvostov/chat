@@ -18,20 +18,15 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
   background: #f5f5f5;
 }
 ::-webkit-scrollbar-thumb {
+  height: 25px;
   background: #888888;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #555555;
 }
-
-// @media (max-width: 470px) {
-//   html {
-//     font-size: 14px;
-//   }
-// }
