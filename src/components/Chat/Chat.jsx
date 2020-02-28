@@ -75,7 +75,7 @@ export default class Chat extends Component {
   }
 
   handleMessageSend = (messageText) => {
-    if (this.props.status === 'offline') return;
+    if (this.props.status === 'offline' || this.socket.readyState !== 1) return;
     const message = {
       from: this.props.userName,
       message: messageText,
