@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 import './messageForm.scss';
 
 export default class MessageForm extends Component {
+
   state = {
     messageText: '',
   }
+
   handleChange = (event) => {
     this.setState({
       messageText: event.target.value,
@@ -19,14 +21,26 @@ export default class MessageForm extends Component {
       messageText: '',
     });
   }
+
+  handleKeyDown = (event) => {
+    if (event.key === 'Enter' && event.shiftKey) {
+      return;
+    }
+    if (event.key === 'Enter') {
+      this.handleSubmit(event);
+    }
+  }
+
   render() {
     return (
       <form className='message-form' onSubmit={ this.handleSubmit }>
         <textarea
           rows='2'
-          placeholder='type your message'
+          placeholder='type your message...'
           value={ this.state.messageText }
-          onChange={ this.handleChange } />
+          onChange={ this.handleChange }
+          onKeyDown={ this.handleKeyDown }
+          />
         <button type='submit'>
           <i className="fa fa-paper-plane" aria-hidden="true"></i>
         </button>
