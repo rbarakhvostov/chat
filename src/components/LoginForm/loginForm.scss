@@ -1,3 +1,6 @@
+@import "../../variables.scss";
+@import "../../mixin.scss";
+
 .login-form {
   width: 25%;
   max-width: 250px;
@@ -5,25 +8,16 @@
   flex-direction: column;
   input {
     height: 25px;
-    margin-bottom: 5px;
-    padding-left: 10px;
-    border: 3px solid #1d1ab2;
-    border-radius: 5px;
-    outline:none;
+    @include field(0 10px, 0 0 5px 0, $primary);
     &:focus {
-      border-color:#ffe900;
+      border-color: $secondary;
     }
   }
   button {
     height: 35px;
-    border: 3px solid #1d1ab2;
-    border-radius: 5px;
-    background-color: #ffffff;
-    outline :none;
-    cursor: pointer;
+    @include button(3px solid $primary);
     &:hover {
-      background-color: #ffe900;
+      background-color: $secondary;
     }
   }
 }
-

@@ -19,6 +19,7 @@ export default class MessageForm extends Component {
       messageText: event.target.value,
     });
   }
+
   handleSubmit = (event) => {
     event.preventDefault();
     if (!this.state.messageText.trim()) return;
@@ -46,7 +47,7 @@ export default class MessageForm extends Component {
           value={ this.state.messageText }
           onChange={ this.handleChange }
           onKeyDown={ this.handleKeyDown }
-          ref={ this.textArea }/>
+          ref={ this.textArea } />
         <button type='submit'>
           <i className="fa fa-paper-plane" aria-hidden="true"></i>
         </button>

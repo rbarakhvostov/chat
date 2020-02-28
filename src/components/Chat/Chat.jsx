@@ -4,8 +4,9 @@ import Loader from '../Loader';
 import MessageField from '../MessageField';
 import MessageForm from '../MessageForm';
 
-import './chat.scss';
 import icon from '../../images/notification-image.png';
+
+import './chat.scss';
 
 export default class Chat extends Component {
   _protocol = 'wss://wssproxy.herokuapp.com/';
@@ -45,7 +46,6 @@ export default class Chat extends Component {
     }
 
     this.socket.onclose = (event) => {
-      console.log(this.socket.readyState);
       if (event.reason === 'the work is done') return;
       this.connect();
     };
@@ -65,11 +65,9 @@ export default class Chat extends Component {
     if (prevProps.status === 'offline' && !this.socket) {
       this.connect();
     }
-    
   }
 
   componentWillUnmount = () => {
-    // if (this.props.status === 'offline' && !this.socket) return;
     if (this.props.status === 'offline') return;
     this.socket.close(1000, 'the work is done');
   }

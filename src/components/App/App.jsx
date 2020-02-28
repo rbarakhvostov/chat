@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import LoginForm from '../LoginForm';
 import Chat from '../Chat';
-// import WSservice from '../../service/ws-service';
-
-import './app.scss';
 
 export default class App extends Component {
   state = {

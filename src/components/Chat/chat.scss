@@ -1,13 +1,14 @@
+@import "../../variables.scss";
+@import "../../mixin.scss";
+
 .chat {
   width: 90%;
   max-width: 800px;
-  border: 5px solid #1d1ab2;
+  border: 5px solid $primary;
   border-radius: 5px;
   .message-field-wrapper {
     height: 80vh;
     max-height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexible(center);
   }
 }

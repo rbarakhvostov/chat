@@ -18,11 +18,13 @@ export default class LoginForm extends Component {
       userName: event.target.value,
     });
   }
+
   handleSubmit = (event) => {
     event.preventDefault();
     if (!this.state.userName.trim()) return;
     this.props.onUserLogIn(this.state.userName);
   }
+
   render() {
     return (
       <form className='login-form' onSubmit={ this.handleSubmit }>

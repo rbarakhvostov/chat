@@ -27,7 +27,7 @@ export default class MessageField extends Component  {
     const messageItems = this.props.messages.map( item => {
       const { id, ...itemProps } = item;
       return (
-        <MessageItem { ...itemProps } key={ id }/>
+        <MessageItem { ...itemProps } key={ id } />
       );
     });
     return (

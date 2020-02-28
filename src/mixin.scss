@@ -1,0 +1,21 @@
+@mixin flexible($justifyContent) {
+  display: flex;
+  justify-content: $justifyContent;
+  align-items: center;
+}
+
+@mixin field($padding, $margin, $color) {
+  padding: $padding;
+  margin: $margin;
+  border: 3px solid $color;
+  border-radius: 5px;
+  outline:none;
+}
+
+@mixin button($border) {
+  border: $border;
+  border-radius: 5px;
+  background-color: #ffffff;
+  outline:none;
+  cursor: pointer;
+}
