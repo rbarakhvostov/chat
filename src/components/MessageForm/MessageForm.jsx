@@ -4,8 +4,14 @@ import './messageForm.scss';
 
 export default class MessageForm extends Component {
 
+  textArea = React.createRef();
+
   state = {
     messageText: '',
+  }
+
+  componentDidMount = () => {
+    this.textArea.current.focus();
   }
 
   handleChange = (event) => {
@@ -40,7 +46,7 @@ export default class MessageForm extends Component {
           value={ this.state.messageText }
           onChange={ this.handleChange }
           onKeyDown={ this.handleKeyDown }
-          />
+          ref={ this.textArea }/>
         <button type='submit'>
           <i className="fa fa-paper-plane" aria-hidden="true"></i>
         </button>
