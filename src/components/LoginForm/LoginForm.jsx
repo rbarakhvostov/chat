@@ -3,9 +3,16 @@ import React, { Component } from 'react';
 import './loginForm.scss';
 
 export default class LoginForm extends Component {
+  input = React.createRef();
+
   state = {
     userName: '',
   }
+
+  componentDidMount = () => {
+    this.input.current.focus();
+  }
+
   handleChange = (event) => {
     this.setState({
       userName: event.target.value,
@@ -22,7 +29,8 @@ export default class LoginForm extends Component {
         <input
           value={ this.state.userName }
           onChange={ this.handleChange } 
-          placeholder='username' />
+          placeholder='username'
+          ref={ this.input } />
         <button type='submit'>log in</button>
       </form>
     );
