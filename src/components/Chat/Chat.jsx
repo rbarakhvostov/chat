@@ -5,7 +5,7 @@ import MessageField from '../MessageField';
 import MessageForm from '../MessageForm';
 
 import './chat.scss';
-import icon from '../../notification-image.png';
+import icon from '../../images/notification-image.png';
 
 export default class Chat extends Component {
   _protocol = 'wss://wssproxy.herokuapp.com/';
