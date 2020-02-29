@@ -5,7 +5,7 @@
   max-width: 250px;
   display: flex;
   flex-direction: column;
-  padding-left: 5px;
+  padding: 0 5px;
   margin: 0 0 20px 5px;
   border-radius: 5px;
   background-color: $message-item;
@@ -18,7 +18,7 @@
     color: $message-author;
   }
   .message-text {
-    padding: 5px;
+    padding: 5px 0 5px 5px;
     margin: 5px 0;
     border-radius: 5px;
   }
