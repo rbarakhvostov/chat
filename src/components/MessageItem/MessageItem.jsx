@@ -12,15 +12,15 @@ export default class MessageItem extends React.Component {
 
   render() {
     const { from, time } = this.props;
-    const info = moment(time).format("HH:mm:ss DD MMM YYYY");
+    const timeDate = moment(time).format("HH:mm:ss DD MMM YYYY");
     const className = from === localStorage.getItem('WSchatUserName')
-                      ? 'message-item own-message'
+                      ? 'message-item message-item-own'
                       : 'message-item';
     return (
       <div className={ className }>
         <span className="message-author">{ from }</span>
         <span className="message-text" ref={ this.messageTextRef }></span>
-        <span className="message-info">{ info }</span>
+        <span className="message-time-date">{ timeDate }</span>
       </div>
     );
   }

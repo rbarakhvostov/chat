@@ -12,7 +12,7 @@
     font-size: 0.8rem;
     resize: none;
     &:focus {
-      border-color: $secondary;
+      border-color: $secondary-color;
     }
   }
   button {
@@ -22,7 +22,7 @@
     font-size: 1.3em;
     &:hover {
       i {
-        color: $primary;
+        color: $primary-color;
       }
     }
     i {

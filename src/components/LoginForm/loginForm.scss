@@ -8,16 +8,16 @@
   flex-direction: column;
   input {
     height: 25px;
-    @include field(0 10px, 0 0 5px 0, $primary);
+    @include field(0 10px, 0 0 5px 0, $primary-color);
     &:focus {
-      border-color: $secondary;
+      border-color: $secondary-color;
     }
   }
   button {
     height: 35px;
-    @include button(3px solid $primary);
+    @include button(3px solid $primary-color);
     &:hover {
-      background-color: $secondary;
+      background-color: $secondary-color;
     }
   }
 }

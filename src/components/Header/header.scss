@@ -5,8 +5,8 @@
   width: 100%;
   padding: 5px 0 10px;
   @include flexible(space-between);
-  background-color: $primary;
-  color: $secondary;
+  background-color: $primary-color;
+  color: $secondary-color;
   .status {
     margin-left: 5px;
     font-size: 0.8rem;
@@ -19,7 +19,7 @@
     margin-right: 5px;
     @include button(none);
     &:hover {
-      background-color: $secondary;
+      background-color: $secondary-color;
     }
   }
 }
