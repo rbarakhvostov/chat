@@ -9,17 +9,14 @@ export default class MessageField extends Component  {
 
   moveScrollbarThumb = () => {
     const messageField = this.messageFieldRef.current;
-    console.log(messageField)
     messageField.scrollTop = messageField.scrollHeight;
   }
 
   componentDidMount() {
-    console.log('MF did mount');
     this.moveScrollbarThumb();
   }
 
   componentDidUpdate() {
-    console.log('MFDIDUPDATE');
     this.moveScrollbarThumb();
   }
 
