@@ -9,7 +9,7 @@ import icon from '../../images/notification-image.png';
 import './chat.scss';
 
 export default class Chat extends Component {
-  _protocol = 'wss://wssproxy.herokuapp.com/';
+  _protocol = 'ws://st-chat.shas.tel';
   socket = null;
   state = {
     loading: true,
