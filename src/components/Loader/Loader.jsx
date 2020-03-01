@@ -4,7 +4,7 @@ import './loader.scss';
 
 const Loader = () => {
   return (
-    <div className="lds-facebook">
+    <div className="loader">
       <div></div>
       <div></div>
       <div></div>
