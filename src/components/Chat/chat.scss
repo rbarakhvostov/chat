@@ -12,3 +12,9 @@
     @include flexible(center);
   }
 }
+
+@media (max-height: 580px) and (orientation: landscape) {
+  .chat .message-field-wrapper {
+    height: 65vh;
+  }
+}
