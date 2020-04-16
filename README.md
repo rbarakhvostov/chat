@@ -2,4 +2,6 @@
 
 # CHAT
 
+[https://chat-rbarakhvostov.netlify.app/](https://chat-rbarakhvostov.netlify.app/)
+
 ![Chat](./public/chat.PNG)
