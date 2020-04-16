@@ -2,4 +2,4 @@
 
 # CHAT
 
-![Chat](./public/chat.jpg)
+![Chat](./public/chat.PNG)
